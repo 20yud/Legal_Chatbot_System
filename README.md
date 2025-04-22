@@ -35,6 +35,28 @@ Hệ thống chatbot hỗ trợ tìm kiếm thông tin pháp luật bằng tiế
 4. **Preprocessing**: Dữ liệu được segment để cải thiện chất lượng embedding.
 
 ---
+## 📊 Kết quả đánh giá mô hình
+
+### 🔍 Không xếp hạng lại (Bi-Encoder Only)
+
+| Mô hình       | MAP    | MRR    | NDCG   | Recall@10 |
+|--------------|--------|--------|--------|-----------|
+| XLM-RoBERTa  | 0.2724 | 0.2839 | 0.2762 | 0.5018    |
+| **PhoBERT**  | **0.4707** | **0.4900** | **0.4772** | **0.7223** |
+
+> **Nhận xét**: PhoBERT vượt trội hơn XLM-RoBERTa trên tất cả các chỉ số, thể hiện lợi thế của việc sử dụng mô hình đơn ngôn ngữ được thiết kế riêng cho tiếng Việt. Recall@10 của PhoBERT đạt 0.7223, cho thấy tài liệu đúng được truy xuất trong top 10 kết quả cho 72.23% các truy vấn.
+
+---
+
+### 🔁 Có xếp hạng lại (Bi-Encoder + Cross-Encoder)
+
+| Mô hình       | MAP    | MRR    | NDCG   | Recall@10 |
+|--------------|--------|--------|--------|-----------|
+| XLM-RoBERTa  | 0.3558 | 0.3613 | 0.3499 | 0.5545    |
+| **PhoBERT**  | **0.5598** | **0.5766** | **0.5655** | **0.7714** |
+
+> **Nhận xét**: Việc xếp hạng lại bằng Cross-Encoder cải thiện hiệu suất của cả hai mô hình. Đặc biệt với PhoBERT, Recall@10 tăng từ 0.7223 lên 0.7714, minh chứng rõ ràng cho hiệu quả của việc rerank kết quả truy xuất. Các chỉ số MAP, MRR và NDCG cũng tăng lên, cho thấy Cross-Encoder giúp phân biệt tốt hơn giữa các tài liệu có mức độ tương đồng cao.
+
 
 ## 🚀 Hướng phát triển tiếp theo
 
