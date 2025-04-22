@@ -1,0 +1,1 @@
+kaggle link: https://www.kaggle.com/code/epsilon1234/cs431-retrieval-system
